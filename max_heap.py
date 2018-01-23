@@ -1,7 +1,7 @@
 from math import log
 
 
-class MinHeap:
+class MaxHeap:
     def __init__(self):
         self.heap = []
 
@@ -32,34 +32,33 @@ class MinHeap:
     def right_child(self, index):
         return self.heap[self.get_right_child_index(index)]
 
-    def remove_min(self):
+    def remove_max(self):
         if len(self.heap) == 0:
             raise ValueError
 
-        min_item = self.heap[0]
+        val = self.heap[0]
         self.heap[0] = self.heap[-1]
         del self.heap[-1]
         self.heapify_down()
-        return min_item
+        return val
 
-    def insert(self, item):
-        self.heap.append(item)
+    def insert(self, val):
+        self.heap.append(val)
         self.heapify_up()
 
     def heapify_down(self):
         index = 0
         while self.has_left_child(index):
-            smaller_child_index = self.get_left_child_index(index)
-            if self.has_right_child(index) and self.right_child(index) < self.left_child(index):
-                smaller_child_index = self.get_right_child_index(index)
+            larger_child_index = self.get_left_child_index(index)
+            if self.has_right_child(index) and self.right_child(index) > self.left_child(index):
+                larger_child_index = self.get_right_child_index(index)
 
-            self.heap[smaller_child_index], self.heap[index] = self.heap[index], self.heap[smaller_child_index]
-            index = smaller_child_index
+            self.heap[larger_child_index], self.heap[index] = self.heap[index], self.heap[larger_child_index]
+            index = larger_child_index
 
     def heapify_up(self):
         index = len(self.heap) - 1
-        item = self.heap[index]
-        while self.has_parent(index) and self.parent(index) > item:
+        while self.has_parent(index) and self.parent(index) < self.heap[index]:
             self.heap[self.get_parent_index(
                 index)], self.heap[index] = self.heap[index], self.heap[self.get_parent_index(index)]
             index = self.get_parent_index(index)
@@ -76,7 +75,7 @@ class MinHeap:
 
 
 def main():
-    heap = MinHeap()
+    heap = MaxHeap()
     heap.insert(2)
     heap.insert(3)
     heap.insert(8)
@@ -84,6 +83,7 @@ def main():
     heap.insert(7)
     heap.insert(10)
     heap.insert(9)
+    heap.insert(8)
     heap.print_heap()
 
 
