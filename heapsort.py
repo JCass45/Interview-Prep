@@ -6,7 +6,10 @@ def build_max_heap(array):
 
 
 def max_heapify(array, i, max_index):
+<<<<<<< HEAD
     # max_index arg needed for when we heapsort and we decrease the size of the heap relative to the input array
+=======
+>>>>>>> 61c40139a406b5635ae3f51fda60e93fe3aaec17
     while i < max_index:
         index = i
         left_child = 2 * i + 1
@@ -28,12 +31,15 @@ def max_heapify(array, i, max_index):
 
 
 def heapsort(array):
+<<<<<<< HEAD
     '''
     1. Convert unsorted array to a max heap
     2. Repeat:
         Swap last and first index in max heap (first index is guaranteed largest element)
         Reconvert array into max heap, excluding the sorted portion (max heap becomes smaller by 1 element each time)
     '''
+=======
+>>>>>>> 61c40139a406b5635ae3f51fda60e93fe3aaec17
     build_max_heap(array)
     for last_index in range(len(array) - 1, -1, -1):
         array[0], array[last_index] = array[last_index], array[0]
