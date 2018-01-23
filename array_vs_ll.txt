@@ -1,0 +1,6 @@
+> Array is guaranteed contiguous in memory and LL is not
+> Array is O(1) access time and LL is O(n) access time
+> Array is index based and LL relies on pointer references between members
+> Array is compile time fixed size and LL can grow dynamically at runtime
+> Array is slower to insert elements as reshuffling requires more work
+> Can binary search an array whereas LL is linear search only
